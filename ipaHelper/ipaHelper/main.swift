@@ -8,8 +8,6 @@
 
 import Foundation
 
-println("Hello, World!")
-
 //let path = "/Users/msmith/Downloads/Enterprise_Wildcard_InHouse_Distribution_Profile.mobileprovision"
 //
 //if let profile = Profile(filePath: path) {
@@ -23,34 +21,38 @@ let libraryPath = "~/Library/MobileDevice/Provisioning Profiles/".stringByExpand
 
 libraryPath.lastPathComponent.pathExtension
 
-println("Time: \(NSDate())")
+let startTime = NSDate()
 
 var profiles: [Profile] = []
 
 if let libraryFiles = NSFileManager.defaultManager().contentsOfDirectoryAtPath(libraryPath, error: nil) as? [String] {
-    let profileFiles = libraryFiles.filter({(file: String) -> (Bool) in
-        if let url = file as? NSURL {
-            if let path = url.path {
-                if path.lastPathComponent.pathExtension == "mobileprovision" {
-                    return true
-                }
-            }
+    let profileFiles = libraryFiles.filter({(filePath: String) -> (Bool) in
+        if filePath.lastPathComponent.pathExtension == "mobileprovision" {
+            return true
         }
     
         return false
     })
     
-    for profilefile: AnyObject in profileFiles {
-        if let fileUrl = profilefile as? NSURL {
-            if let profile = Profile(fileURL: fileUrl) {
+    for profileFile: AnyObject in profileFiles {
+        if let profilePathComponent = profileFile as? String {
+            let fullPath = libraryPath + "/" + profilePathComponent
+            
+            println("full path: \(fullPath)")
+            
+            if let profile = Profile(filePath: fullPath) {
                 profiles.append(profile)
             }
         }
     }
 }
 
+let finishTime = NSDate()
+
+let time = finishTime.timeIntervalSinceDate(startTime)
+
 println("Decoded \(profiles.count) profiles!")
-println("Time: \(NSDate())")
+println("Time: \(time)")
 
 
 

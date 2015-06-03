@@ -28,17 +28,17 @@ public class Profile {
     // MARK: Profile Properties
     //==========================================================================
     
-    public let appIDName: String
+    public let appIDName: String?
     public let applicationIdentifierPrefix: [String]
     public let developerCertificates: [NSData]
     public let entitlements: Entitlements!
-    public let name: String
+    public let name: String?
     public let provisionsAllDevices: Bool
     public let provisionedDevices: [String]
     public let teamIdentifier: [String]
-    public let teamName: String
+    public let teamName: String?
     public let timeToLive: Int
-    public let uuid: String
+    public let uuid: String!
     public let version: Int
     
     public let creationDate: NSDate!
@@ -61,20 +61,20 @@ public class Profile {
         self.creationDate = dictionary?[ProfilePropertyKey.creationDate.rawValue] as? NSDate
         self.expirationDate = dictionary?[ProfilePropertyKey.expirationDate.rawValue] as? NSDate
         
-        self.appIDName = dictionary?[ProfilePropertyKey.appIDName.rawValue] as? String ?? ""
+        self.appIDName = dictionary?[ProfilePropertyKey.appIDName.rawValue] as? String
         self.applicationIdentifierPrefix = dictionary?[ProfilePropertyKey.applicationIdentifierPrefix.rawValue] as? [String] ?? []
         self.developerCertificates = dictionary?[ProfilePropertyKey.developerCertificates.rawValue] as? [NSData] ?? []
         self.entitlements = Entitlements(dictionary: dictionary?[ProfilePropertyKey.entitlements.rawValue] as? [String: AnyObject])
-        self.name = dictionary?[ProfilePropertyKey.name.rawValue] as? String ?? ""
+        self.name = dictionary?[ProfilePropertyKey.name.rawValue] as? String
         self.provisionsAllDevices = dictionary?[ProfilePropertyKey.provisionsAllDevices.rawValue] as? Bool ?? false
         self.provisionedDevices = dictionary?[ProfilePropertyKey.provisionedDevices.rawValue] as? [String] ?? []
         self.teamIdentifier = dictionary?[ProfilePropertyKey.teamIdentifier.rawValue] as? [String] ?? []
-        self.teamName = dictionary?[ProfilePropertyKey.teamName.rawValue] as? String ?? ""
+        self.teamName = dictionary?[ProfilePropertyKey.teamName.rawValue] as? String
         self.timeToLive = dictionary?[ProfilePropertyKey.timeToLive.rawValue] as? Int ?? 0
-        self.uuid = dictionary?[ProfilePropertyKey.UUID.rawValue] as? String ?? ""
+        self.uuid = dictionary?[ProfilePropertyKey.UUID.rawValue] as? String
         self.version = dictionary?[ProfilePropertyKey.version.rawValue] as? Int ?? 0
         
-        if (dictionary == nil || self.creationDate == nil || self.expirationDate == nil || self.entitlements == nil) {
+        if (dictionary == nil || self.creationDate == nil || self.expirationDate == nil || self.entitlements == nil || self.uuid == nil) {
             return nil
         }
     }
@@ -149,7 +149,7 @@ public class Entitlements {
     public let betaReportsActive: Bool
     public let getTaskAllow: Bool
     public let keychainAccessGroups: [String]
-    public let teamIdentifier: String!
+    public let teamIdentifier: String?
     
     // Push
     public let apsEnvironment: PushEnvironment
@@ -168,12 +168,12 @@ public class Entitlements {
         self.teamIdentifier = dictionary?[EntitlementsPropertyKey.teamIdentifier.rawValue] as? String
         
         // Push
-        self.apsEnvironment = PushEnvironment.from(dictionary?[EntitlementsPropertyKey.apsEnvironment.rawValue] as? String)
+        self.apsEnvironment = PushEnvironment(rawValue: dictionary?[EntitlementsPropertyKey.apsEnvironment.rawValue] as? String ?? "") ?? .None
         
         // iCloud
         self.ubiquityStoreIdentifier = dictionary?[EntitlementsPropertyKey.ubiquityStoreIdentifier.rawValue] as? String
         
-        if (self.fullDictionary == nil || self.applicationIdentifer == nil || self.teamIdentifier == nil) {
+        if (self.fullDictionary == nil || self.applicationIdentifer == nil) {
             return nil
         }
     }
@@ -191,17 +191,6 @@ public enum PushEnvironment: String {
     case None = ""
     case Development = "development"
     case Production =  "production"
-    
-    static func from(string: String?) -> PushEnvironment {
-        if string == PushEnvironment.Development.rawValue {
-            return .Development
-        }
-        else if string == PushEnvironment.Development.rawValue {
-            return .Production
-        }
-        
-        return .None
-    }
 }
 
 //==========================================================================
