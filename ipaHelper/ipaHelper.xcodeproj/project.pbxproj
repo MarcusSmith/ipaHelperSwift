@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		450C7D3F1B1F773A0030EF09 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C7D3E1B1F773A0030EF09 /* ProfileManager.swift */; };
 		45754D0D1AD8682000C0A160 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45754D0C1AD8682000C0A160 /* main.swift */; };
 		45754D161AD86A5700C0A160 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45754D151AD86A5700C0A160 /* Application.swift */; };
 		45754D181AD86A6D00C0A160 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45754D171AD86A6D00C0A160 /* Profile.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		450C7D3E1B1F773A0030EF09 /* ProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		45754D091AD8682000C0A160 /* ipaHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ipaHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		45754D0C1AD8682000C0A160 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		45754D151AD86A5700C0A160 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
@@ -42,6 +44,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		450C7D3D1B1F76F20030EF09 /* ProfileManager */ = {
+			isa = PBXGroup;
+			children = (
+				450C7D3E1B1F773A0030EF09 /* ProfileManager.swift */,
+			);
+			name = ProfileManager;
+			sourceTree = "<group>";
+		};
 		45754D001AD8681F00C0A160 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +80,7 @@
 		45754D131AD8682900C0A160 /* ipaHelper */ = {
 			isa = PBXGroup;
 			children = (
+				450C7D3D1B1F76F20030EF09 /* ProfileManager */,
 				45754D141AD8683300C0A160 /* Model */,
 			);
 			name = ipaHelper;
@@ -143,6 +154,7 @@
 				45754D161AD86A5700C0A160 /* Application.swift in Sources */,
 				45754D181AD86A6D00C0A160 /* Profile.swift in Sources */,
 				45754D0D1AD8682000C0A160 /* main.swift in Sources */,
+				450C7D3F1B1F773A0030EF09 /* ProfileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +269,7 @@
 				45754D121AD8682000C0A160 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

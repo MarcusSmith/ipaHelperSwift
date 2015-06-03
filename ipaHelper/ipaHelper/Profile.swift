@@ -45,11 +45,29 @@ public class Profile {
     public let expirationDate: NSDate!
     
     public var isExpired: Bool {
-        return self.expirationDate.compare(NSDate()) == .OrderedAscending
+        return self.expirationDate.timeIntervalSinceNow < 0
+    }
+    
+    public var isWildcard: Bool {
+        return entitlements.applicationIdentifer.hasSuffix("*")
     }
     
     public var type: ProfileType {
         return .None
+    }
+    
+    public func matches(bundleID: String) -> Bool {
+        var appID = self.entitlements.applicationIdentifer
+        
+        if let dotRange = appID.rangeOfString(".") {
+            appID.removeRange(appID.startIndex..<dotRange.endIndex)
+        }
+        
+        if !isWildcard {
+            return bundleID == appID
+        }
+        
+        return bundleID.hasPrefix(appID.substringToIndex(appID.endIndex.predecessor())) || appID == "*"
     }
     
     //==========================================================================

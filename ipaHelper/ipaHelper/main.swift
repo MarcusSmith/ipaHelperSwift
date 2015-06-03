@@ -8,52 +8,21 @@
 
 import Foundation
 
-//let path = "/Users/msmith/Downloads/Enterprise_Wildcard_InHouse_Distribution_Profile.mobileprovision"
-//
-//if let profile = Profile(filePath: path) {
-//    println()
-//}
-//else {
-//    println()
-//}
-
-let libraryPath = "~/Library/MobileDevice/Provisioning Profiles/".stringByExpandingTildeInPath
-
-libraryPath.lastPathComponent.pathExtension
-
 let startTime = NSDate()
 
-var profiles: [Profile] = []
-
-if let libraryFiles = NSFileManager.defaultManager().contentsOfDirectoryAtPath(libraryPath, error: nil) as? [String] {
-    let profileFiles = libraryFiles.filter({(filePath: String) -> (Bool) in
-        if filePath.lastPathComponent.pathExtension == "mobileprovision" {
-            return true
-        }
-    
-        return false
-    })
-    
-    for profileFile: AnyObject in profileFiles {
-        if let profilePathComponent = profileFile as? String {
-            let fullPath = libraryPath + "/" + profilePathComponent
-            
-            println("full path: \(fullPath)")
-            
-            if let profile = Profile(filePath: fullPath) {
-                profiles.append(profile)
-            }
-        }
-    }
-}
+//var profiles = ProfileManager.library.profilesMatching("de.bmw.co2", acceptWildcardMatches: false)
+var profiles = ProfileManager.library.expiredProfiles
 
 let finishTime = NSDate()
 
 let time = finishTime.timeIntervalSinceDate(startTime)
 
-println("Decoded \(profiles.count) profiles!")
+println("Found \(profiles.count) matching profiles")
 println("Time: \(time)")
 
+for profile in profiles {
+    println("\(profile.filePath)")
+}
 
 
 
