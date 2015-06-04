@@ -11,6 +11,7 @@
 		45754D0D1AD8682000C0A160 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45754D0C1AD8682000C0A160 /* main.swift */; };
 		45754D161AD86A5700C0A160 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45754D151AD86A5700C0A160 /* Application.swift */; };
 		45754D181AD86A6D00C0A160 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45754D171AD86A6D00C0A160 /* Profile.swift */; };
+		D09135231B1F9D6D00FA70B0 /* InfoPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09135221B1F9D6D00FA70B0 /* InfoPlist.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		45754D0C1AD8682000C0A160 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		45754D151AD86A5700C0A160 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		45754D171AD86A6D00C0A160 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		D09135221B1F9D6D00FA70B0 /* InfoPlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoPlist.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				45754D151AD86A5700C0A160 /* Application.swift */,
 				45754D171AD86A6D00C0A160 /* Profile.swift */,
+				D09135221B1F9D6D00FA70B0 /* InfoPlist.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D09135231B1F9D6D00FA70B0 /* InfoPlist.swift in Sources */,
 				45754D161AD86A5700C0A160 /* Application.swift in Sources */,
 				45754D181AD86A6D00C0A160 /* Profile.swift in Sources */,
 				45754D0D1AD8682000C0A160 /* main.swift in Sources */,
